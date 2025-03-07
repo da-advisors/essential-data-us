@@ -352,3 +352,35 @@ h2 {
     text-decoration: underline;
     text-underline-offset: 8px;
 }
+
+/* Get Involved Page Styles */
+.content-container {
+    max-width: 800px;
+    padding: 2em;
+    margin: 1em auto;
+    word-wrap: break-word;
+    font-family: var(--sans-serif);
+    line-height: 1.4em;
+}
+
+.content-container li {
+    padding: 0.5em 0;
+}
+
+.content-container h2 {
+    color: var(--black);
+    font-family: var(--sans-serif);
+    font-weight: 600;
+    margin-top: 1.5em;
+    text-align: left;
+}
+
+.content-container a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.content-container a:hover {
+    color: var(--red);
+    text-decoration: underline;
+}

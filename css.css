@@ -190,23 +190,7 @@ h2 {
     opacity: 0.9;
 }
 
-#message{
-    display: block;
-    margin: 0 auto;
-    width: 90%;
-    max-width: 35em;
-    font-family: var(--sans-serif);
-    font-weight: var(--body-font-weight);
-    font-size: clamp(0.85em, 1.8vw, 15pt);
-    background: var(--white);
-}
-
-#message p{
-    font-weight: var(--body-font-weight);
-    max-width: 900px;
-    margin: 0 auto 1em auto;
-    line-height: 1.1em;
-}
+/* Remove message styling since we're now using content-container */
 
 .actionButtons{
     display: flex;
@@ -383,4 +367,14 @@ h2 {
 .content-container a:hover {
     color: var(--red);
     text-decoration: underline;
+}
+
+/* Override content-container link styling for action buttons */
+.content-container .actionButton {
+    color: var(--white);
+}
+
+.content-container .actionButton:hover {
+    color: var(--blue);
+    text-decoration: none;
 }

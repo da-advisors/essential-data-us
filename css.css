@@ -15,6 +15,8 @@
     --dark-gray: #C8C8C8;
     --light-gray: #FDFDFD;
     --white: #FFFFFF;
+    --light-mint: #B6FFBB;
+    --mint: #3EB489;
     
     /* Font definitions */
     --sans-serif: 'Public Sans', sans-serif;
@@ -148,7 +150,8 @@ h2 {
     overflow: hidden;
 }
 
-.story{
+/* Add rounded corners to the story cards */
+.story {
     display: none;
     position: absolute;
     height: min-content;
@@ -164,25 +167,65 @@ h2 {
     will-change: left;
     transition: transform 0.25s ease-out, border 0.25s ease-out, color 0.25s ease-out;
     z-index: 4;
-    color: var(--red);
-    border: 2px solid var(--red);
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    border-radius: 20px; /* Add rounded corners */
+    overflow: hidden; /* Ensure content respects the rounded corners */
 }
 
+/* Add styling for the footer */
+.story-footer {
+    background: var(--blue); /* Match the default border/text color (blue) */
+    color: white;
+    margin: calc(0.3vw + 0.6lvh + 0.8vmin) calc(-0.3vw - 0.6lvh - 0.8vmin) calc(-0.3vw - 0.6lvh - 0.8vmin);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-left-radius: 18px; /* Match the card's border radius, adjusted for border */
+    border-bottom-right-radius: 18px;
+    margin-top: auto; /* Push to bottom of flex container */
+    transition: background-color 0.25s ease-out; /* Add transition to match the story transition */
+}
+
+/* Update the hover state to change the footer background to red */
+.story:hover .story-footer, 
+.story:active .story-footer {
+    background: var(--red); /* Change to red on hover, matching the border/text hover state */
+}
+
+/* Style for the tag/category with icon */
+ .story-tag {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+ }
+
+ .story-tag i, .story-tag svg {
+     width: 20px;
+     height: 20px;
+ }
+
+ /* Style for the agency/source */
+ .story-source {
+     font-weight: 500;
+ }
+
 .story a {
-    color: var(--blue);
+    color: var(--red);
     text-decoration: underline;
     transition: color 0.25s ease-out;
 }
 
 .story:hover, .story:active{
     z-index: 10000 !important;
-    color: var(--blue);
-    border-color: var(--blue);
+    color: var(--red);
+    border-color: var(--red);
     transform: scale(1.15,1.15);
 }
 
 .story:hover a, .story:active a {
-    color: var(--red);
+    color: var(--blue);
 }
 
 .story a:hover {

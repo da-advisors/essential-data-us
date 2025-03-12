@@ -15,8 +15,6 @@
     --dark-gray: #C8C8C8;
     --light-gray: #FDFDFD;
     --white: #FFFFFF;
-    --light-mint: #B6FFBB;
-    --mint: #3EB489;
     
     /* Font definitions */
     --sans-serif: 'Public Sans', sans-serif;
@@ -170,18 +168,22 @@ h2 {
     color: var(--blue);
     border: 2px solid var(--blue);
     border-radius: 20px; /* Add rounded corners */
-    overflow: hidden; /* Ensure content respects the rounded corners */
-    transform: translateZ(0); /* Force GPU acceleration */
-    backface-visibility: hidden; /* Reduce visual jitter */
-    perspective: 1000px; /* Improve rendering */
+/*    overflow: hidden; /* Ensure content respects the rounded corners 
+    transform: translateZ(0); /* Force GPU acceleration 
+    backface-visibility: hidden; /* Reduce visual jitter 
+    perspective: 1000px; /* Improve rendering 
     will-change: transform; /* Hint to browser about animation */
+    box-sizing: border-box;
 }
 
 /* Add styling for the footer */
 .story-footer {
     background: var(--blue); /* Match the default border/text color (blue) */
     color: white;
-    margin: calc(0.3vw + 0.6lvh + 0.8vmin) calc(-0.3vw - 0.6lvh - 0.8vmin) calc(-0.3vw - 0.6lvh - 0.8vmin);
+    margin: calc(0.3vw + 0.6lvh + 0.8vmin) 
+            calc(-0.3vw - 0.6lvh - 0.8vmin - 2px) 
+            calc(-0.3vw - 0.6lvh - 0.8vmin - 2px) 
+            calc(-0.3vw - 0.6lvh - 0.8vmin - 2px);
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -191,6 +193,11 @@ h2 {
     margin-top: auto; /* Push to bottom of flex container */
     transition: background-color 0.25s ease-out; /* Add transition to match the story transition */
     box-sizing: border-box;
+}
+
+/* Make sure all elements use the same box model */
+.story *, .story-footer * {
+  box-sizing: border-box;
 }
 
 /* Update the hover state to change the footer background to red */

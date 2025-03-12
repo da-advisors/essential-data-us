@@ -171,6 +171,10 @@ h2 {
     border: 2px solid var(--blue);
     border-radius: 20px; /* Add rounded corners */
     overflow: hidden; /* Ensure content respects the rounded corners */
+    transform: translateZ(0); /* Force GPU acceleration */
+    backface-visibility: hidden; /* Reduce visual jitter */
+    perspective: 1000px; /* Improve rendering */
+    will-change: transform; /* Hint to browser about animation */
 }
 
 /* Add styling for the footer */
@@ -186,6 +190,7 @@ h2 {
     border-bottom-right-radius: 18px;
     margin-top: auto; /* Push to bottom of flex container */
     transition: background-color 0.25s ease-out; /* Add transition to match the story transition */
+    box-sizing: border-box;
 }
 
 /* Update the hover state to change the footer background to red */
@@ -195,21 +200,24 @@ h2 {
 }
 
 /* Style for the tag/category with icon */
- .story-tag {
-     display: flex;
-     align-items: center;
-     gap: 8px;
- }
+.story-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
- .story-tag i, .story-tag svg {
-     width: 20px;
-     height: 20px;
- }
+.story-tag i, .story-tag svg {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;    /* Prevent shrinking */
+    min-height: 20px;   /* Prevent shrinking */
+    flex-shrink: 0;     /* Prevent shrinking */
+}
 
- /* Style for the agency/source */
- .story-source {
-     font-weight: 500;
- }
+/* Style for the agency/source */
+.story-source {
+    font-weight: 500;
+}
 
 .story a {
     color: var(--red);
@@ -231,6 +239,10 @@ h2 {
 .story a:hover {
     text-decoration: underline;
     opacity: 0.9;
+}
+
+.story-tag, .story-source {
+  box-sizing: border-box;
 }
 
 /* Remove message styling since we're now using content-container */

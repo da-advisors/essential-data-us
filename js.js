@@ -23,7 +23,7 @@ function shuffleArray(array) {
   
 //Card Animation
 var storyCards = [];
-const storyCardParent = document.getElementById("storyGallery");
+var storyCardParent;
 
 const speed = 1; 
 const spread = 0.09;
@@ -32,6 +32,9 @@ var accelerating = false;
 const maxSpeed = 20.0;
 
 function createStoryCards(){
+    storyCardParent = document.getElementById("storyGallery");
+    if (!storyCardParent) return; // Exit if not on a page with story gallery
+    
     document.querySelectorAll(".story").forEach(element => {
         //init
         element.style.zIndex = 5 +  Math.floor( Math.random() * 100 );
@@ -55,7 +58,8 @@ function createStoryCards(){
 }
 
 function updateStoryPositions(){
-
+    if (!storyCardParent) return; // Exit if not on a page with story gallery
+    
     storyCardParent.style.height = window.innerHeight * 0.55 + "px";
 
     const parentWidth = storyCardParent.offsetWidth;
@@ -101,30 +105,32 @@ function updateStoryPositions(){
             element.node.style.left = element.positionX + "px";
         }  
     }
-
 }
 
-document.getElementById("storyGallery").addEventListener("mousedown", function(){
-    accelerating = true;
+// Initialize story gallery functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const storyGallery = document.getElementById("storyGallery");
+    if (storyGallery) {
+        storyGallery.addEventListener("mousedown", function(){
+            accelerating = true;
+        });
+        storyGallery.addEventListener("mouseup", function(){
+            accelerating = false;
+        });
+        storyGallery.addEventListener("mouseleave", function(){
+            accelerating = false;
+        });
+        storyGallery.addEventListener("touchdown", function(){
+            accelerating = true;
+        });
+        storyGallery.addEventListener("touchend", function(){
+            accelerating = false;
+        });
+        
+        createStoryCards();
+        window.setInterval(updateStoryPositions, countingInterval_MS);
+    }
 });
-document.getElementById("storyGallery").addEventListener("mouseup", function(){
-    accelerating = false;
-});
-document.getElementById("storyGallery").addEventListener("mouseleave", function(){
-    accelerating = false;
-});
-document.getElementById("storyGallery").addEventListener("touchdown", function(){
-    accelerating = true;
-});
-document.getElementById("storyGallery").addEventListener("mouseup", function(){
-    accelerating = false;
-});
-document.getElementById("storyGallery").addEventListener("mouseleave", function(){
-    accelerating = false;
-});
-
-createStoryCards();
-window.setInterval(updateStoryPositions, countingInterval_MS);
 
 // About Us page functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -159,34 +165,31 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Mobile hamburger menu functionality - simplified
+// Simpler mobile menu implementation
 document.addEventListener('DOMContentLoaded', function() {
-  // Simple mobile menu toggle
-  const menuButtons = document.querySelectorAll('.menu-toggle');
+  // Get all menu toggle buttons
+  var toggleButtons = document.querySelectorAll('.menu-toggle');
   
-  menuButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
+  // Add click event to each button
+  for (var i = 0; i < toggleButtons.length; i++) {
+    toggleButtons[i].addEventListener('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
       
-      const menu = this.closest('.hamburger-menu');
-      menu.classList.toggle('menu-open');
-      
-      // Close any other open menus
-      document.querySelectorAll('.hamburger-menu.menu-open').forEach(openMenu => {
-        if (openMenu !== menu) {
-          openMenu.classList.remove('menu-open');
-        }
-      });
+      // Toggle the menu-open class on the parent hamburger-menu
+      this.parentNode.classList.toggle('menu-open');
     });
-  });
+  }
   
-  // Close menu when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.hamburger-menu')) {
-      document.querySelectorAll('.hamburger-menu.menu-open').forEach(menu => {
-        menu.classList.remove('menu-open');
-      });
+  // Close menus when clicking elsewhere
+  document.addEventListener('click', function(event) {
+    var openMenus = document.querySelectorAll('.hamburger-menu.menu-open');
+    
+    // If clicked outside menu, close all open menus
+    if (!event.target.closest('.hamburger-menu')) {
+      for (var i = 0; i < openMenus.length; i++) {
+        openMenus[i].classList.remove('menu-open');
+      }
     }
   });
 });

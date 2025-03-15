@@ -534,6 +534,16 @@ h2 {
   margin: 0.5rem 0;
 }
 
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hamburger-menu .site-nav {
+    width: 100%;
+    left: 0;
+    right: auto;
+    text-align: center;
+  }
+}
+
 /* Team section container */
 .team-section {
   max-width: 1200px;

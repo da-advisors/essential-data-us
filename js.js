@@ -163,18 +163,31 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const hamburgerMenu = document.querySelector('.hamburger-menu');
   const hamburgerIcon = document.querySelector('.hamburger-menu .fas');
+  const siteNav = document.querySelector('.hamburger-menu .site-nav');
   
-  if (hamburgerMenu && hamburgerIcon) {
+  if (hamburgerMenu && hamburgerIcon && siteNav) {
     hamburgerIcon.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      hamburgerMenu.classList.toggle('active');
+      
+      // Toggle menu visibility
+      if (siteNav.style.visibility === 'visible') {
+        siteNav.style.visibility = 'hidden';
+        siteNav.style.opacity = '0';
+        hamburgerIcon.style.color = '';
+      } else {
+        siteNav.style.visibility = 'visible';
+        siteNav.style.opacity = '1';
+        hamburgerIcon.style.color = 'var(--red)';
+      }
     });
     
     // Close menu when clicking outside
     document.addEventListener('click', function(e) {
       if (!hamburgerMenu.contains(e.target)) {
-        hamburgerMenu.classList.remove('active');
+        siteNav.style.visibility = 'hidden';
+        siteNav.style.opacity = '0';
+        hamburgerIcon.style.color = '';
       }
     });
   }

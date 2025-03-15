@@ -158,3 +158,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+// Mobile hamburger menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburgerMenu = document.querySelector('.hamburger-menu');
+  const hamburgerIcon = document.querySelector('.hamburger-menu .fas');
+  
+  if (hamburgerMenu && hamburgerIcon) {
+    hamburgerIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      hamburgerMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!hamburgerMenu.contains(e.target)) {
+        hamburgerMenu.classList.remove('active');
+      }
+    });
+  }
+});

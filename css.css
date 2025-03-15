@@ -166,6 +166,14 @@ h2 {
     margin-bottom: 0.5em;
 }
 
+h2 {
+  color: var(--black);
+  font-family: var(--sans-serif);
+  font-weight: 600;
+  margin-top: 1.5em;
+  text-align: center;
+}
+
 #jobsKilled {
     font-weight: 900;
     color: var(--black);
@@ -457,7 +465,7 @@ h2 {
     font-family: var(--sans-serif);
     font-weight: 600;
     margin-top: 1.5em;
-    text-align: left;
+    text-align: center;
 }
 
 .content-container a {
@@ -511,23 +519,26 @@ h2 {
   z-index: 100;
 }
 
-.hamburger-menu:hover .site-nav {
+.hamburger-menu:hover .site-nav,
+.hamburger-menu.active .site-nav {
   opacity: 1;
   visibility: visible;
 }
 
-/* About Us Page Styles */
-.about-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  line-height: 1.6;
+/* Override flex display for hamburger menu */
+.hamburger-menu .site-nav ul {
+  display: block;
 }
 
-.about-section p {
-  max-width: 800px;
-  margin: 1rem 0;
-  text-align: left;
+.hamburger-menu .site-nav li {
+  margin: 0.5rem 0;
+}
+
+/* Team section container */
+.team-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 /* Team grid layout */

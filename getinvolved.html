@@ -34,6 +34,8 @@
   <meta property="twitter:image" content="https://essentialdata.us/banner.png" />
 
   <link rel="stylesheet" href="css.css">
+  <!-- Font Awesome for hamburger menu icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -43,11 +45,18 @@
         <img src="AED.png" alt="America's Essential Data Logo" id="logo">
       </a>
     </div>
-    <div class="menu-placeholder">
-      <!-- Future menu will go here -->
+    <div class="hamburger-menu">
+      <i class="fas fa-bars"></i>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="getinvolved.html" class="active">Get Involved</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
-  
+
   <div id="header">
     <h1>Ready to get involved?</h1>
   </div>
@@ -91,9 +100,9 @@
   <div class="content-container">
   <h3>Archiving</h3>
     <ul>
-      <li>The <b><a href="https://www.datarescueproject.org/" target="_blank">Data Rescue Project</a></b> is a coordinated effort among a group of data organizations, including <a href="https://iassistdata.org/" target="_blank">IASSIST</a>, <a href="https://rdapassociation.org/" target="_blank">RDAP</a>, and members of the <a href="https://datacurationnetwork.org/" target="_blank">Data Curation Network</a>. The project’s goal is to serve as a clearinghouse for data rescue-related efforts and data access points for public US governmental data that are currently at risk. Efforts include: data gathering, data curation and cleaning, data cataloging, and providing sustained access and distribution of data assets.</li>
+      <li>The <b><a href="https://www.datarescueproject.org/" target="_blank">Data Rescue Project</a></b> is a coordinated effort among a group of data organizations, including <a href="https://iassistdata.org/" target="_blank">IASSIST</a>, <a href="https://rdapassociation.org/" target="_blank">RDAP</a>, and members of the <a href="https://datacurationnetwork.org/" target="_blank">Data Curation Network</a>. The project's goal is to serve as a clearinghouse for data rescue-related efforts and data access points for public US governmental data that are currently at risk. Efforts include: data gathering, data curation and cleaning, data cataloging, and providing sustained access and distribution of data assets.</li>
       <li>The <b><a href="https://lil.law.harvard.edu/blog/2025/01/30/preserving-public-u-s-federal-data/?ref=404media.co" target="_blank">Harvard Law School Library Innovation Lab</a></b> has created a data vault to download, sign as authentic, and make available copies of public government data that is most valuable to researchers, scholars, civil society and the public at large across every field. To begin, they have collected major portions of the datasets tracked by data.gov, federal Github repositories, and PubMed. In coming weeks they will share full data and metadata for the collection so far.</li>
-      <li><b><a href="https://www.icpsr.umich.edu/web/pages/" target="_blank">ICPSR</a></b> is an international consortium of more than 810 academic institutions and research organizations, based at the University of Michigan. Through <a href="https://www.datalumos.org/datalumos/" target="_blank">DataLumos</a>, an ICPSR archive for valuable government data resources, they’re working to preserve, document, and disseminate thousands of files from agencies such as the Centers for Disease Control and the Department of Education.</li>
+      <li><b><a href="https://www.icpsr.umich.edu/web/pages/" target="_blank">ICPSR</a></b> is an international consortium of more than 810 academic institutions and research organizations, based at the University of Michigan. Through <a href="https://www.datalumos.org/datalumos/" target="_blank">DataLumos</a>, an ICPSR archive for valuable government data resources, they're working to preserve, document, and disseminate thousands of files from agencies such as the Centers for Disease Control and the Department of Education.</li>
       <li><b><a href="https://www.ipums.org/" target="_blank">IPUMS</a></b>, based at the University of Minnesota, provides census and survey data from around the world integrated across time and space, including major data sources from the US government, such as the Census, American Community Survey, Current Population Survey, and more.</li>
       <li>The <b><a href="https://archive.org" target="_blank">Internet Archive</a></b>, a 501(c)(3) non-profit, is a digital library of Internet sites and other cultural artifacts in digital form, and they have 28+ years of web history accessible through the <a href="https://web.archive.org/" target="_blank">Wayback Machine</a> and work with 1,200+ library and other partners through the Archive-It program to identify important web pages.</li>
       <li>The <b><a href="https://eotarchive.org" target="_blank">End of Term Web Archive</a></b> captures and saves U.S. Government websites at the end of presidential administrations. The EOT has thus far preserved websites from administration changes in 2008, 2012, 2016, and 2020. </li>
@@ -102,7 +111,7 @@
 
   <h3>Monitoring</h3>
     <ul>
-    <li><b><a href="https://www.amstat.org/the-nations-data-at-risk-year-two-ongoing-monitoring" target="_blank">The Nation’s Data at Risk</a>, American Statistical Association-George Mason University Project on the Health of the Principal Statistical Agencies</b>
+    <li><b><a href="https://www.amstat.org/the-nations-data-at-risk-year-two-ongoing-monitoring" target="_blank">The Nation's Data at Risk</a>, American Statistical Association-George Mason University Project on the Health of the Principal Statistical Agencies</b>
     <p>The ASA/GMU <a href="https://www.amstat.org/policy-and-advocacy/assessing-the-health-of-the-principal-federal-statistical-agencies" target="_blank">project to assess the health of the federal statistical agencies</a> is monitoring and sharing updates on the health of the federal statistical agencies as we become aware of them. While focused on the 13 principal federal statistical agencies, they are also monitoring the other federal statistical units and offices, as well as the Office of Management and Budget, the Interagency Council on Statistical Policy, and the statistical officials designated under the Evidence Act.</p></li>
     <li><b><a href="http://www.safe-track.org/" target="_blank">SAFE-Track</a>, Data Foundation</b>
     <p>The Data Foundation has launched the SAFE-Track (Secure Anonymous Federal Evidence, Data and Analysis Tracking), a secure, encrypted portal that enables confidential reporting of impacts from recent changes to federal evidence and data activities.</p></li>
@@ -111,20 +120,13 @@
   <h3>Collecting User Stories</h3>
     <ul>
     <li><b><a href="https://gmu.az1.qualtrics.com/jfe/form/SV_d1e8O61AU8lf4LI" target="_blank">Federal Statistics User Feedback</a>, American Statistical Association-George Mason University</b>
-    <p>The American Statistical Association-George Mason University project to assess the health of the federal statistical agencies seeks to independently examine the health of the federal statistical system. The feedback they’re looking for includes examples of how individuals use federal statistics and suggestions to improve both the data and the user experience.</p></li>
-    <li><b><a href="https://datafoundation.org/pages/mydatastory#:~:text=The%20Data%20Foundation's%20%23MyDataStory%20initiative,and%20communities%20across%20the%20country." target="_blank">#MyDataStory Initiative</a>, Data Foundation</b>
-    <p>The Data Foundation's #MyDataStory initiative collects real stories from Americans about how federal data helps them solve problems, make decisions, and serve their communities. Through these firsthand accounts, they are documenting how public data strengthens families, businesses, and communities across the country.</p></li>
-    <li>The <b><a href="https://www.datarescueproject.org/telling-your-data-stories/" target="_blank">Data Rescue Project</a></b> is also looking for short descriptions of how public data is essential to your work and what the loss would mean for you.
+    <p>The American Statistical Association-George Mason University project to assess the health of the federal statistical agencies seeks to independently examine the health of the federal statistical system. The feedback they're looking for includes examples of how individuals use federal statistics and suggestions to improve both the data and the user experience.</p></li>
     </ul>
-    <div class="actionButtons">
-      <a class="actionButton" href="index.html">
-	<div>Back to Home</div>
-      </a>
-    </div>
+  </div>
 
+  <div id="citations">
+    <div class="jump"><a href="#" style="color:white;"> &ShortUpArrow; Return to top</a></div>
   </div>
 
 </body>
 </html>
-
-B

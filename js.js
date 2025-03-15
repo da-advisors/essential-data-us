@@ -1,4 +1,3 @@
-
 //Public Domain
 
 //Job Number Counter
@@ -126,3 +125,36 @@ document.getElementById("storyGallery").addEventListener("mouseleave", function(
 
 createStoryCards();
 window.setInterval(updateStoryPositions, countingInterval_MS);
+
+// About Us page functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // For touch devices, add a class to show bio on tap
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    const teamMembers = document.querySelectorAll('.team-member');
+    
+    if (teamMembers.length > 0) {
+      teamMembers.forEach(member => {
+        member.addEventListener('click', function() {
+          // Remove active class from all other members
+          teamMembers.forEach(m => {
+            if (m !== member) {
+              m.classList.remove('touch-active');
+            }
+          });
+          
+          // Toggle active class on the clicked member
+          this.classList.toggle('touch-active');
+        });
+      });
+      
+      // Close bio when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.team-member')) {
+          teamMembers.forEach(member => {
+            member.classList.remove('touch-active');
+          });
+        }
+      });
+    }
+  }
+});

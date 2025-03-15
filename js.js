@@ -161,20 +161,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Mobile hamburger menu functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Simple toggle for hamburger menu on mobile
-  const hamburgerIcon = document.querySelector('.hamburger-menu .fas');
+  const menuToggle = document.querySelector('.menu-toggle');
   
-  if (hamburgerIcon) {
-    hamburgerIcon.addEventListener('click', function(event) {
-      event.stopPropagation();
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function(event) {
+      event.preventDefault();
       const menu = this.closest('.hamburger-menu');
       menu.classList.toggle('menu-open');
     });
     
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
-      const openMenus = document.querySelectorAll('.hamburger-menu.menu-open');
-      if (openMenus.length > 0 && !event.target.closest('.hamburger-menu')) {
+      if (!event.target.closest('.hamburger-menu')) {
+        const openMenus = document.querySelectorAll('.hamburger-menu.menu-open');
         openMenus.forEach(menu => menu.classList.remove('menu-open'));
       }
     });

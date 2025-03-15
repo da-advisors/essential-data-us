@@ -69,6 +69,52 @@ body {
     object-fit: contain;
 }
 
+/* Hide the original navigation - we're using the hamburger menu instead */
+#site-header > .site-nav {
+    display: none;
+}
+
+.site-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav li {
+    margin: 0 1rem;
+}
+
+.site-nav a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+    color: var(--red);
+}
+
+.site-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--red);
+    transition: width 0.3s ease;
+}
+
+.site-nav a:hover::after,
+.site-nav a.active::after {
+    width: 100%;
+}
+
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
     #site-header {
@@ -78,16 +124,9 @@ body {
     #logo {
         max-height: 40px;
     }
-}
-
-.menu-placeholder {
-    /* Space reserved for future menu */
-    min-width: 200px;
-}
-
-@media (max-width: 480px) {
-    .menu-placeholder {
-        min-width: 100px;
+    
+    .site-nav {
+        display: none; /* Hide navigation on mobile - can be replaced with a mobile menu */
     }
 }
 
@@ -439,4 +478,73 @@ h2 {
 .content-container .actionButton:hover {
     color: var(--blue);
     text-decoration: none;
+}
+
+/* Hamburger menu */
+.hamburger-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-menu i {
+  font-size: 1.5rem;
+  color: var(--blue);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.hamburger-menu i:hover {
+  color: var(--red);
+}
+
+.hamburger-menu .site-nav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.hamburger-menu:hover .site-nav {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.hamburger-menu .site-nav ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+.hamburger-menu .site-nav li {
+  margin: 0;
+}
+
+.hamburger-menu .site-nav a {
+  padding: 0.75rem 1.5rem;
+  display: block;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger-menu .site-nav a:hover {
+  background-color: var(--light-gray);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hamburger-menu .site-nav {
+    width: 100%;
+    left: 0;
+  }
 }

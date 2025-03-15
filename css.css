@@ -520,7 +520,7 @@ h2 {
 }
 
 .hamburger-menu:hover .site-nav,
-.hamburger-menu.active .site-nav {
+.hamburger-menu.menu-open .site-nav {
   opacity: 1;
   visibility: visible;
 }

@@ -6,6 +6,7 @@ class ResourceStatusRepository:
         self.db = db
 
     def find_latest_changes(self):
+        # TODO: Swap this out with read of the new materialized view?
         return [
             dict(
                 dataset="Workplace Fatality Investigations Data",
@@ -32,9 +33,9 @@ class ResourceStatusRepository:
     def find_by_resource_id(self, resource_id):
         return self.db.query(
             """
-            SELECT * FROM beta.resource_status
-            WHERE resource_id = %s
+            SELECT * FROM resource_status
+            WHERE resource_id = ?
             ORDER BY checked_at DESC
             """,
-            {'resource_id': resource_id},
+            [resource_id],
         )

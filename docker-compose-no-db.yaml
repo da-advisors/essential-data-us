@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  # Web application
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aed_webapp
+    environment:
+      # Replace these values with your actual database connection details
+      - DATABASE_URL=postgresql://postgres:postgres@your-db-host:5432/aed
+      - FLASK_APP=app.py
+      - FLASK_ENV=production  # Changed to production for deployment
+    volumes:
+      - ./app:/app
+    ports:
+      - "5001:5000"
+    restart: unless-stopped

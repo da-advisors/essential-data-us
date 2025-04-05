@@ -9,21 +9,21 @@ class ResourceRepository:
     def all(self):
         return self.db.query(
             """
-            SELECT * FROM resources
+            SELECT * FROM beta.resources
             """
         )
 
     def find_by_id(self, id):
         return self.db.query(
             """
-            SELECT * FROM resources WHERE id = ?
+            SELECT * FROM beta.resources WHERE id = %s
             """,
-            [id],
+            {'id': id},
         )
 
     def all_previews(self):
         return self.db.query(
             """
-            SELECT * FROM v_resource_previews
+            SELECT * FROM beta.v_resource_previews
             """
         )

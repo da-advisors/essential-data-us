@@ -1,14 +1,20 @@
-import duckdb
-from typing import List
+import os
+from typing import Any, Dict, List, Optional
+import psycopg2
+import psycopg2.extras
 
 
 class DatabaseInstance:
-    def __init__(self, path):
-        self.conn = duckdb.connect(str(path), read_only=True)
+    def __init__(self):
+        self.conn = None
+        self.database_url = os.environ.get("DATABASE_URL")
 
-    def query(self, query: object, parameters: object = None) -> List[tuple]:
-        result = self.conn.execute(query, parameters)
-        column_names = [column[0] for column in result.description]
-        list_of_objects = [dict(zip(column_names, row)) for row in result.fetchall()]
+    def _ensure_connection(self):
+        if self.conn is None:
+            self.conn = psycopg2.connect(self.database_url)
 
-        return list_of_objects
+    def query(self, query: str, parameters: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+        self._ensure_connection()
+        with self.conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
+            cursor.execute(query, parameters)
+            return cursor.fetchall()

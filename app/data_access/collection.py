@@ -9,22 +9,22 @@ class CollectionRepository:
     def all(self):
         return self.db.query(
             """
-            SELECT * FROM collections;
+            SELECT * FROM beta.collections;
             """
         )
 
     def find_by_id(self, id: str):
         return self.db.query(
             """
-            SELECT * FROM collections WHERE id = ?;
+            SELECT * FROM beta.collections WHERE id = %s;
             """,
-            [id],
+            {'id': id},
         )
 
     def all_previews(self):
         return self.db.query(
             """
-            SELECT * FROM v_collection_previews;
+            SELECT * FROM beta.v_collection_previews;
             """
         )
 
@@ -36,16 +36,16 @@ class CollectionRepository:
                     collection_id,
                     resource_id,
                     is_primary
-                FROM collections_resources
-                WHERE collection_id = ?
+                FROM beta.collection_resources
+                WHERE collection_id = %s
             )
             SELECT 
-                resources.*,
+                r.*,
                 linkages.is_primary 
-            FROM resources
+            FROM beta.resources r
             LEFT JOIN
                 linkages
-                ON resources.id = linkages.resource_id;
+                ON r.id = linkages.resource_id;
             """,
-            [collection_id],
+            {'collection_id': collection_id},
         )

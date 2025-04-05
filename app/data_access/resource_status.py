@@ -33,9 +33,9 @@ class ResourceStatusRepository:
     def find_by_resource_id(self, resource_id):
         return self.db.query(
             """
-            SELECT * FROM resource_status
-            WHERE resource_id = ?
+            SELECT * FROM beta.resource_status
+            WHERE resource_id = %s
             ORDER BY checked_at DESC
             """,
-            [resource_id],
+            {'resource_id': resource_id},
         )

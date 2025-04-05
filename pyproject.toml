@@ -1,0 +1,45 @@
+[project]
+name = "americas_essential_data"
+version = "0.1.0"
+description = "Packages related to America's Essential Data"
+requires-python = ">=3.10"
+# !!! IF YOU MODIFY DEPENDENCIES IN THIS FILE,
+# !!! PLEASE RUN pip freeze TO MAKE CORRESPONDING UPDATES TO REQUIREMENTS.TXT
+# Example command: uv pip freeze --exclude-editable > requirements.txt
+dependencies = [
+    "atoma==0.0.17",  # For parsing RSS/Atom feeds (may help with last-modified detection)
+    "beautifulsoup4==4.13.3",  # For parsing HTML
+    "click==8.1.8",  # For CLI options parsing/routing
+    "duckdb==1.2.1",  # For DuckDB support
+    "flask==3.1.0",  # For the Flask web server
+    "jinja2==3.1.6",  # For HTML templating
+    "pandas==2.2.3",  # For data management
+    "pyarrow==19.0.1",  # To support Apache Arrow format
+    "pyyaml==6.0.2",  # For config files
+    "requests==2.32.3",  # For making HTTP requests
+    "rich==13.9.4",  # For nice CLI output
+    "tqdm==4.67.1",  # For smart progress meters
+]
+
+# !!! IF YOU MODIFY DEPENDENCIES IN THIS FILE,
+# !!! PLEASE RUN pip freeze TO MAKE CORRESPONDING UPDATES TO REQUIREMENTS.TXT
+# Example command: uv pip freeze --exclude-editable > requirements.txt
+[project.optional-dependencies]
+dev = [
+    "black==25.1.0",  # For linting
+    "djlint==1.36.4",  # For formatting and linting
+    "pytest==8.3.5",  # For testing
+    "pytest-cov==6.0.0",  # For test coverage
+    "ruff==0.9.10",  # For linting
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.djlint]
+max_blank_lines=2
+
+[tool.pytest.ini_options]
+addopts = "-ra -q"
+testpaths = ["tests"]

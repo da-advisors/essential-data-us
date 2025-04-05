@@ -144,3 +144,31 @@ h6 {
 
   list-style: none;
 }
+
+/* Content alignment styles */
+.site-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--spacing--4);
+}
+
+.resource-list__header,
+.resource-list__items {
+  max-width: 1500px; /* Match the header width */
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .site-content {
+    padding: 0 var(--spacing--6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-content {
+    padding: 0 var(--spacing--8);
+  }
+}
